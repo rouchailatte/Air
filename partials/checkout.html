@@ -1,0 +1,50 @@
+<div class="checkout">
+	<div class="checkoutHeader">
+		<h1>CONFIRMATION</h1>
+	</div>
+	<div class="checkoutItemDesc">
+		<div class="checkoutItemDescImg">
+			<img src="{{ outfit.img }}">
+		</div>
+		<div class="checkoutItemUl">
+			<ul>
+				<li><strong>{{ outfit.name }}</strong></li>
+				<li>{{ outfit.brand }}</li>
+				<li>${{ outfit.price }}/day</li>
+				<li>size: {{ outfit.size }}{{ outfit.fit }}</li>
+				<li>rental duration: </li>
+				<li>total: </li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="checkoutInput">
+		<div class="checkoutInputHeader">
+			<h2>Please input your information: </h2>
+		</div>
+		<form class="checkoutInputForm">
+			Email <br> <input class="inputEmail" type="text" name="name"><br>
+			Shipping Address <br> <input class="inputAddress" type="text" name="sAddress"> <br>
+			State &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Zip<br> <input type="text" name="state" class="inputZip"> &emsp;&emsp;<input type="text" name="zip" class="inputZip"><br>
+			Billing Address <br> <input class="inputAddress" type="text" name="bAddress">
+		</form>
+	</div>
+
+	<div class="checkoutCredit">
+	  <div class="checkoutCreditHeader">
+			<h2>Please Enter your payment</h2>
+		</div>
+		<div class="checkoutCreditInfo">
+			<form>
+				Card No. <br>
+				<input type="text" name="cardNo" class="inputCard"> <br>
+				Expiration Date&emsp;&emsp;&emsp;&emsp;Security Code <br>
+				<input type="text" name="expDate" class="inputExp">&emsp;<input type="text" name="expDate" class="inputExp">&emsp;&emsp;&emsp;<input type="text" name="secureCode" class="inputExp">
+			</form>
+		</div>
+	</div>
+
+	<div class="checkoutSubmit">
+		<button type="button">Submit</button>
+	</div>
+</div>

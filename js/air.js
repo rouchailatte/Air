@@ -6,6 +6,7 @@ air.config(function($routeProvider){
 		when('/',{templateUrl:'partials/directory.html', controller: 'mainCtrl'}).
 		when('/item/:id',{templateUrl:'/partials/view.html', controller: 'itemCtrl'}).
 		when('/aboutus', {templateUrl: '/partials/aboutus.html'}).
+		when('/rent/:id', {templateUrl: '/partials/checkout.html', controller: 'itemCtrl'}).
 		otherwise({redirectTo:'/'})
 });
 
@@ -113,8 +114,7 @@ air.controller('itemCtrl', function($scope, $routeParams, outfits){
 
 	console.log($routeParams);
 	outfits.list(function(data){
-		$scope.outfit = data[$routeParams.id -1]
-		console.log($scope.outfit)
+		$scope.outfit = data[$routeParams.id-1];
 	})
 });
 

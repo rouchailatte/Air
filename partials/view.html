@@ -8,9 +8,16 @@
 		<ul>
 			<li class="itemDescBrand">{{ outfit.brand }}</li>
 			<li class="itemDescName">{{ outfit.name }}</li>
-			<li class="itemDescSize">{{ outfit.size }}{{ outfit.fit }}</li>
+			<li class="itemDescPrice">${{ outfit.price }}/day</li>
+			<li class="itemDescSize">size: {{ outfit.size }}{{ outfit.fit }}</li>
 			<h4>Description</h4>
 			<li class="itemDescDesc">{{ outfit.desc }}</li>
 		</ul>
+
+		<div class="itemDescButton">
+			<a href="#/rent/{{ outfit.id }}"><button type="button">Rent</button></a>
+		</div>
 	</div>
+
+
 </div>
