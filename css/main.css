@@ -1,0 +1,181 @@
+body
+{
+	width: 80%;
+	margin: 0 auto;
+	font-family: 'Alegreya Sans', sans-serif;
+	font-size: 1em;
+}
+
+.mainHeader h1
+{
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+	font-size: 6em;
+	font-weight: 700;
+	letter-spacing: 15px;
+	margin: 0.2em 0 0.5em 0;
+}
+.mainHeaderSign
+{
+	text-align: right;
+	margin: 10px;
+}
+.mainHeaderSign ul li
+{
+	display: inline;
+	padding-left: 1%;
+}
+
+/* the css in directory html */
+h3
+{
+	font-weight: 700;
+	font-size: 1em;
+	margin: 10px 0;
+}
+h4
+{
+	padding-bottom: 10px;
+}
+.main
+{
+	display: flex;
+}
+.mainNav
+{
+	flex-grow: 1;
+	width: 20%;
+	padding-right: 10%;
+}
+.mainNavWord
+{
+	font-weight: 400;
+	font-size: 0.9em;
+	padding-bottom: 10%;
+}
+.mainNavFilter
+{
+	margin-top: 20px;
+}
+.mainNavFilter ul
+{
+	padding-left: 10%;
+} 
+.mainNavFilter ul li
+{
+	padding-bottom: 5%;
+}
+
+.mainDisp
+{
+	flex-grow: 4;
+	width: 75%;
+
+	margin-left: 3%;
+}
+.mainDispItem
+{
+	width: 28%;
+	display: inline-block;
+	border: 1px solid #eee;
+	padding: 0;
+	margin: 0 5% 5% 0;
+	text-align: center;
+}
+
+
+/* footer */
+footer
+{
+	width: 85%;
+	margin: 0 auto 20px auto;
+	margin-top: 4%;
+	padding-top: 3%;
+	border-top: 1px dashed #eee;
+}
+.footerContent
+{
+	display: flex;
+}
+.footerContentMenu
+{
+	width: 20%;
+	padding-left: 0;
+}
+.footerContentMenu ul li
+{
+	padding-bottom: 3%;
+}
+.footerContentWord
+{
+	width: 61%;
+}
+.footerContentIcons
+{
+	padding-left: 5%;
+	width: 20%;
+}
+.footerContentIcons ul li
+{
+	display: inline;
+	padding-right: 5%;
+
+	font-size: 1.5em;
+}
+.footerContentIconsMailing
+{
+	margin-bottom: 10px;
+}
+.footerContentIconsMailing p
+{
+	margin-bottom: 10px;
+}
+
+
+
+/* css for item page view.html */
+.item
+{
+	width: 80%;
+	margin: 0 auto;
+	display: flex;
+}
+.itemPic
+{
+	flex-grow: 1;
+	width: 75%;
+	text-align: center;
+}
+.itemPic img
+{
+	width: 450px;
+	height: 600px;
+}
+.itemDesc
+{
+	flex-grow: 1;
+	width: 20%;
+}
+.itemDescBrand
+{
+	font-size: 1.4em;
+}
+.itemDescName
+{
+	font-size: 2.7em;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #ddd;
+}
+.itemDescSize
+{
+	font-size: 1.2em;
+	padding: 10px 0;
+}
+.itemDescDesc
+{
+	padding-left: 15px;
+}
+
+
+
+/* modal for sign up */

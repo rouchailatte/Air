@@ -1,0 +1,43 @@
+<a href="/#/view">The fourth</a>
+
+
+<!-- main search bar -->
+<div class="main">
+	<div class="mainNav">
+		<h3>INPUT YOUT FAVORITE</h3>
+		<p class="mainNavWord">Input one of your wears you are most confident with, and we will filter out same style and fit based on your input</p>
+		<div class="mainNavSearch">
+			<form ng-submit="querySearch(inputBrand, inputSize)">
+				<input type="text" ng-model="inputBrand" name="inputBrand">
+				<input type="text" ng-model="inputSize" name="inputSize"><br>
+				<input type="submit" name="submit" value="Search">
+			</form>
+		</div>
+
+		<div class="mainNavFilter" ng-show="filterToggle">
+			<h4>Brands</h4>
+			<ul ng-repeat="brand in brandLeft">
+				<a href="" ng-click="brandToggle(brand)"><li>{{ brand }}</li></a>
+			</ul>
+
+			<h4>Types</h4>
+			<ul ng-repeat="type in typeLeft">
+				<a href="" ng-click="typeToggle(type)"><li>{{ type }}</li></a>
+			</ul>
+		</div>
+
+
+	</div>
+
+
+
+	<!-- main display -->
+	<div class="mainDisp">
+		<ul ng-repeat="outfit in outfits | filter: brandFilter | filter: typeFilter" class="mainDispItem">
+			<a href="/#/item/{{outfit.id}}"><img ng-src="{{ outfit.img }}" alt="img" height="100%" width="100%"></a>
+			<li>{{ outfit.name }}</li>
+			<li>{{ outfit.brand }}</li>
+			<li>{{ outfit.size }}{{ outfit.fit }}</li>
+		</ul>
+	</div>
+</div>
