@@ -30,11 +30,23 @@
 
 	<!-- main display -->
 	<div class="mainDisp">
-		<ul ng-repeat="outfit in outfits | filter: brandFilter | filter: typeFilter" class="mainDispItem">
+		<ul ng-repeat="outfit in outfits | filter: brandFilter | filter: typeFilter | startFrom:currentPage*pageSize | limitTo:pageSize" class="mainDispItem">
 			<a href="/#/item/{{outfit.id}}"><img ng-src="{{ outfit.img }}" alt="img" height="100%" width="100%"></a>
 			<li>{{ outfit.name }}</li>
 			<li>{{ outfit.brand }}</li>
 			<li>{{ outfit.size }}{{ outfit.fit }}</li>
 		</ul>
+			<!-- for pagination -->
+	<div>
+    <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+        Previous
+    </button>
+    {{currentPage+1}}/{{numberOfPages()}}
+    <button ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1">
+        Next
+    </button>
 	</div>
+	</div>
+
+
 </div>

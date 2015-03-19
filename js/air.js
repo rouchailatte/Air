@@ -33,11 +33,30 @@ air.factory('outfits', function($http){
 	};
 });
 
+air.filter('startFrom', function() {
+    return function(input, start) {
+        start = +start; //parse to int
+        return input.slice(start);
+    }
+});
 
 air.controller('mainCtrl', function($scope, $filter, outfits){
 
 	// for filter menu to display
 	$scope.filterToggle = false;
+
+	// for pagination
+	$scope.currentPage = 0;
+  $scope.pageSize = 10;
+  $scope.data = [];
+  $scope.numberOfPages=function(){
+    return Math.ceil($scope.data.length/$scope.pageSize);                
+  }
+  for (var i=0; i<45; i++) {
+    $scope.data.push("Item "+i);
+  }
+
+
 
 	outfits.list(function(outfits){
 		$scope.outfits = outfits;
