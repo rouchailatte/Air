@@ -48,6 +48,16 @@ air.controller('mainCtrl', function($scope, $filter, outfits){
 	$scope.filterToggle = false;
 
 
+	// animation for steps and got it button
+	// $(document).ready(function(){
+	// 	$(".mainNotification").hide();
+	// 	$(".mainNotification").fadeIn(500);
+	// });
+
+	$(".mainNotificationButton").click(function(){
+		$(".mainNotification").fadeOut(500);
+		$(".mainNotificationButton").fadeOut(500);
+	});
 
   // main data fetching part
 	outfits.list(function(outfits){

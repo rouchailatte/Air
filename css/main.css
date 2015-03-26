@@ -59,12 +59,19 @@ h4
 .mainContent
 {
 	display: flex;
+	/* for the negative margin of that button*/
 }
 .mainNotification
 {
-	border: 1px dashed #ddd;
+	/*border: 1px dashed #999;*/
 	margin-bottom: 40px;
 }
+.mainNotificationButton
+{
+	text-align: right;
+	margin-top: -20px;
+}
+
 .mainNav
 {
 	flex-grow: 1;
