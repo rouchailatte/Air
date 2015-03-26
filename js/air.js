@@ -3,10 +3,12 @@ var air = angular.module('air',['ngRoute']);
 
 air.config(function($routeProvider){
 	$routeProvider.
+		// when('/',{templateUrl:"partials/intro.html"}).
 		when('/',{templateUrl:'partials/directory.html', controller: 'mainCtrl'}).
 		when('/item/:id',{templateUrl:'/partials/view.html', controller: 'itemCtrl'}).
 		when('/aboutus', {templateUrl: '/partials/aboutus.html'}).
 		when('/rent/:id', {templateUrl: '/partials/checkout.html', controller: 'itemCtrl'}).
+		when('/howto', {templateUrl: '/partials/howto.html'}).
 		otherwise({redirectTo:'/'})
 });
 
@@ -45,21 +47,40 @@ air.controller('mainCtrl', function($scope, $filter, outfits){
 	// for filter menu to display
 	$scope.filterToggle = false;
 
-	// for pagination
-	$scope.currentPage = 0;
-  $scope.pageSize = 10;
-  $scope.data = [];
-  $scope.numberOfPages=function(){
-    return Math.ceil($scope.data.length/$scope.pageSize);                
-  }
-  for (var i=0; i<45; i++) {
-    $scope.data.push("Item "+i);
-  }
 
 
-
+  // main data fetching part
 	outfits.list(function(outfits){
 		$scope.outfits = outfits;
+
+
+		// for the autosuggest input bar - jQuery UI
+		// both brand and input size
+
+  		 $(function() {
+					var availableBrands = [];
+					var availableSizes = [];
+					for(var i=0; i<$scope.outfits.length; ++i){
+						if(availableBrands.indexOf($scope.outfits[i].brand) < 0)
+							availableBrands.push($scope.outfits[i].brand);
+						if(availableSizes.indexOf($scope.outfits[i].size.toString()) < 0)
+							availableSizes.push($scope.outfits[i].size.toString());
+					}
+					availableBrands.sort();
+					availableSizes.sort();
+					$("#inputBrand").autocomplete({
+						source: availableBrands
+					});
+					$("#inputSize").autocomplete({
+						source: availableSizes
+					});
+				});
+
+  		 $(".inputButton").click(function(){
+  		 	$("#inputEffect").hide();
+  		 	$("#inputEffect").fadeIn(500);
+  		 });
+
 
 		$scope.category = "";
 		$scope.querySearch = function(inputBrand, inputSize){
@@ -125,16 +146,43 @@ air.controller('mainCtrl', function($scope, $filter, outfits){
 			}
 		}
 
+
+		// for pagination after the change of the outfits
+		$scope.currentPage = 0;
+	  $scope.pageSize = 10;
+	  $scope.data = [];
+
+	  $scope.numberOfPages=function(){
+	    return Math.ceil($scope.data.length/$scope.pageSize);                
+	  }
+	  for (var i=0; i<$scope.outfits.length; ++i) {
+	    $scope.data.push("Item "+i);
+	  }
+
 	});	
 	
 });
 
 air.controller('itemCtrl', function($scope, $routeParams, outfits){
 
-	console.log($routeParams);
 	outfits.list(function(data){
 		$scope.outfit = data[$routeParams.id-1];
+		$scope.deliveryOption = "1";
 	})
+
+	// animation on the item page
+	$(document).ready(function(){
+		$(".itemPic").hide();
+		$(".checkoutInput").hide();
+		$(".checkoutCredit").hide();
+		$(".checkoutSubmit").hide();
+		$(".itemPic").fadeIn(500);
+		$(".checkoutInput").fadeIn(400, function(){
+			$(".checkoutCredit").fadeIn(400, function(){
+				$(".checkoutSubmit").fadeIn(400);
+			})
+		});
+	});
 });
 
 // modal thing

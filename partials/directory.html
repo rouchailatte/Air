@@ -1,52 +1,56 @@
 <!-- main search bar -->
 <div class="main">
-	<div class="mainNav">
-		<h3>INPUT YOUT FAVORITE</h3>
-		<p class="mainNavWord">Input one of your wears you are most confident with, and we will filter out same style and fit based on your input</p>
-		<div class="mainNavSearch">
-			<form ng-submit="querySearch(inputBrand, inputSize)">
-				<input type="text" ng-model="inputBrand" name="inputBrand">
-				<input type="text" ng-model="inputSize" name="inputSize"><br>
-				<input type="submit" name="submit" value="Search">
-			</form>
+	<div class="mainNotification">
+		<canvas id="mainNotificationCanvas" width="100%" height="150%">
+			Your browser does not support the HTML5 canvas tag
+		</canvas>
+	</div>
+
+	<div class="mainContent">
+		<div class="mainNav">
+			<h3>INPUT YOUT FAVORITE</h3>
+			<p class="mainNavWord">Input one of your wears you are most confident with, and we will filter out same style and fit based on your input</p>
+			<div class="mainNavSearch">
+				<form ng-submit="querySearch(inputBrand, inputSize)">
+						<label>Brand</label><input type="text" ng-model="inputBrand" name="inputBrand" id="inputBrand">
+						<label>Size</label><input type="text" ng-model="inputSize" name="inputSize" id="inputSize"><br>
+					<input type="submit" name="submit" value="Search" class="inputButton">
+				</form>
+			</div>
+
+			<div class="mainNavFilter" ng-show="filterToggle">
+				<h4>Brands</h4>
+				<ul ng-repeat="brand in brandLeft">
+					<li><a href="" ng-click="brandToggle(brand)" class="inputButton">{{ brand }}</a></li>
+				</ul>
+
+				<h4>Types</h4>
+				<ul ng-repeat="type in typeLeft">
+					<li><a href="" ng-click="typeToggle(type)" class="inputButton">{{ type }}</a></li>
+				</ul>
+			</div>
 		</div>
 
-		<div class="mainNavFilter" ng-show="filterToggle">
-			<h4>Brands</h4>
-			<ul ng-repeat="brand in brandLeft">
-				<a href="" ng-click="brandToggle(brand)"><li>{{ brand }}</li></a>
-			</ul>
 
-			<h4>Types</h4>
-			<ul ng-repeat="type in typeLeft">
-				<a href="" ng-click="typeToggle(type)"><li>{{ type }}</li></a>
+
+		<!-- main display -->
+		<div class="mainDisp" id="inputEffect">
+			<ul ng-repeat="outfit in outfits | filter: brandFilter | filter: typeFilter | startFrom:currentPage*pageSize | limitTo:pageSize" class="mainDispItem">
+				<a href="/#/item/{{outfit.id}}"><img ng-src="{{ outfit.img }}" alt="img" height="100%" width="100%"></a>
+				<li>{{ outfit.name }}</li>
+				<li>{{ outfit.brand }}</li>
+				<li>{{ outfit.size }}{{ outfit.fit }}</li>
 			</ul>
+				<!-- for pagination -->
+			<div class="mainDispPagination">
+		    <button ng-hide="currentPage == 0" ng-click="currentPage=currentPage-1" class="inputButton">
+		        Prev
+		    </button>
+		    {{currentPage+1}} / {{numberOfPages()}}
+		    <button ng-hide="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1" class="inputButton">
+		        Next
+		    </button>
+			</div>
 		</div>
-
-
 	</div>
-
-
-
-	<!-- main display -->
-	<div class="mainDisp">
-		<ul ng-repeat="outfit in outfits | filter: brandFilter | filter: typeFilter | startFrom:currentPage*pageSize | limitTo:pageSize" class="mainDispItem">
-			<a href="/#/item/{{outfit.id}}"><img ng-src="{{ outfit.img }}" alt="img" height="100%" width="100%"></a>
-			<li>{{ outfit.name }}</li>
-			<li>{{ outfit.brand }}</li>
-			<li>{{ outfit.size }}{{ outfit.fit }}</li>
-		</ul>
-			<!-- for pagination -->
-	<div>
-    <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
-        Previous
-    </button>
-    {{currentPage+1}}/{{numberOfPages()}}
-    <button ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1">
-        Next
-    </button>
-	</div>
-	</div>
-
-
 </div>

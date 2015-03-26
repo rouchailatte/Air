@@ -13,7 +13,7 @@ body
 	font-size: 6em;
 	font-weight: 700;
 	letter-spacing: 15px;
-	margin: 0.2em 0 0.5em 0;
+	margin: 0.2em 0 0.3em 0;
 }
 .mainHeaderSign
 {
@@ -37,9 +37,33 @@ h4
 {
 	padding-bottom: 10px;
 }
+.mainHeaderNav
+{
+	text-align: center;
+	padding-bottom: 4%;
+}
+.mainHeaderNav ul li
+{
+	display: inline;
+	padding: 0 1.5%;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
 .main
 {
 	display: flex;
+	flex-direction: column;
+}
+
+.mainContent
+{
+	display: flex;
+}
+.mainNotification
+{
+	border: 1px dashed #ddd;
+	margin-bottom: 40px;
 }
 .mainNav
 {
@@ -81,6 +105,11 @@ h4
 	padding: 0;
 	margin: 0 5% 5% 0;
 	text-align: center;
+}
+.mainDispPagination
+{
+	text-align: center;
+	padding-top: 5%;
 }
 
 
@@ -191,9 +220,22 @@ footer
 	letter-spacing: 5px;
 }
 
-
-
-
+.itemDescDelivery
+{
+	margin: 0 0 20px 15px;
+}
+.itemCalendar
+{
+}
+.itemCalendar table
+{
+	margin: 0 0 20px 20px;	
+}
+.itemCalendar table tr:nth-child(1)
+{
+	background-color: #000;
+	color: #fff;
+}
 
 /* checkout page checkout.html */
 .checkout
@@ -244,9 +286,7 @@ footer
 	text-align: center;
 	padding-bottom: 20px;
 }
-.checkoutInputForm
-{
-}
+
 
 .checkoutCredit
 {
@@ -273,7 +313,16 @@ footer
 
 /* modal for sign up */
 
+/* for intro partical js */
+canvas{
+	display:block;
+	vertical-align:bottom;
+}
 
+#particles-js{
+	width: 100%;
+	height: 500px;
+}
 
 /* helper */
 .inputEmail
@@ -295,4 +344,18 @@ footer
 .inputExp
 {
 	width: 50px;
+}
+
+
+
+
+
+th, td {
+    border: 1px solid #444;
+    border-collapse: collapse;
+    padding: 0 8px;
+}
+table
+{
+	border: 3px solid #444; 
 }
